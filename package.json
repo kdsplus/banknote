@@ -1,0 +1,48 @@
+{
+    "name": "banknote",
+    "version": "1.0.1",
+    "description": "banknote",
+    "main": "index.js",
+    "scripts": {
+        "start": "electron .",
+        "build": "npm run build:win",
+        "build:win": "npm run build:win32 && npm run build:win64",
+        "build:win32": "build --win --ia32",
+        "build:win64": "build --win --x64"
+    },
+    "build": {
+        "productName": "banknote",
+        "appId": "com.banknote.bizplay",
+        "asar": true,
+        "protocols": {
+            "name": "banknote",
+            "schemes": [
+                "banknote"
+            ]
+        },
+        "win": {
+            "target": [
+                "zip",
+                "nsis"
+            ],
+            "icon": "./resources/installer/banknote_app.ico",
+            "publisherName": "bizplay Co., Ltd"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "include":"./resources/installer.nsh"
+        },
+        "directories": {
+            "buildResources": "resources/installer/",
+            "output": "dist/",
+            "app": "."
+        }
+    },
+    "author": "bizplay Co., Ltd",
+    "license": "ISC",
+    "devDependencies": {
+        "electron": "^1.7.10",
+        "electron-builder": "^19.52.1"
+    }
+}
